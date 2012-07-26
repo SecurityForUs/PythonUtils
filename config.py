@@ -23,9 +23,9 @@ class Config:
     """
         Initialize the config class and parse the config file.
     """
-    def __init__(self):
+    def __init__(self, path=os.path.normpath(os.getcwd()), filename="config.ini"):
         # Default config file: <current directory of script>/config.ini
-        self.file = "%s/config.ini" % os.path.normpath(os.getcwd())
+        self.file = "%s/%s" % (path, filename)
         
         # Initialize the ini parser class
         self.parser = SafeConfigParser()
@@ -75,3 +75,6 @@ class Config:
     """
     def dump(self):
         print self.config
+    
+    def file(self):
+        return self.file
