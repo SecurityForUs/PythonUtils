@@ -17,7 +17,7 @@ import io
 """
 def asblocks(_f, buflen=1024):
     # Defined so 'data' is not being redefined numerous times in a call
-    date = ""
+    data = ""
     
     while True:
         data = _f.read(buflen)
