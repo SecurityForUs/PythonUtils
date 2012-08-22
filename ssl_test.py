@@ -25,7 +25,7 @@ def check():
         
     return found
 
-import doctest
-
 if __name__ == "__main__":
+    import doctest
+    
     doctest.testmod(m=None, verbose=True)
