@@ -10,6 +10,8 @@ prefers the use of SSLv3, but falls back to v2 if v3 is not an option.
 """
 def check():
     """
+    Below is a doctest to ensure everything runs fine.
+    
     >>> check()
     0
     """
@@ -17,15 +19,14 @@ def check():
     
     found = 0
     
-    names = ssl._PROTOCOL_NAMES.items()
-    for k,name in names:
+    for _,name in ssl._PROTOCOL_NAMES.items():
         if name == "SSLv2":
             found = 1
             break
         
     return found
 
+import doctest
+
 if __name__ == "__main__":
-    import doctest
-    
-    doctest.testmod(m=None, verbose=True)
+    doctest.testmod(m = None, verbose = True)
