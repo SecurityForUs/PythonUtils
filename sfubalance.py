@@ -55,11 +55,6 @@ class Balance:
     def register_buyer(self):
         name = raw_input("Name on card: ")
         email = raw_input("E-mail address: ")
-        addr = raw_input("Street Address: ")
-        city = raw_input("City: ")
-        zip = raw_input("Zip Code: ")
-        country = raw_input("2-digit Country Code: ")
-        phone = raw_input("Phone Number: ")
         cc = raw_input("Credit Card #: ")
         month = raw_input("Month expiration: ")
         year = raw_input("Year expiration: ")
@@ -108,16 +103,26 @@ class Balance:
         
         return info
     
+    """
+    Test function written for #balanced to provide a list of CC's for one account only.
+    Useful for many things.  Could be possible to shorten try: block to one line, not sure.
+    """
+    def get_acct_ccs(self, addr):
+        cards = None
+        
+        try:
+            buyer = balanced.Account.query.filter(email_address=addr)[0]
+            cards = list(balanced.Card.query.filter(card_uri=buyer.cards_uri))
+        except:
+            pass
+        
+        return cards
+    
     def search_cc(self, cc):
         if not isinstance(cc, str):
-            print "%d is not a string.  Converting." % (cc)
             cc = str(cc)
-            print "cc =", cc
             
-        if len(cc) > 4:
-            cc = cc[-4:]
-            print "Fetched last 4:", cc
-        elif len(cc) < 4:
+        if len(cc) < 4:
             print "Invalid length for CC"
             return False
         
@@ -150,7 +155,7 @@ class Balance:
     
 if __name__ == "__main__":
     sfu = Balance()
-    
+        
     cc4 = raw_input("Last 4 of CC: ")
     
     code,val = sfu.cc_valid(cc4)
