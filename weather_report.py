@@ -59,3 +59,6 @@ for msg_id in data:
     headers = "\r\n".join(headers)
     
     smtp.sendmail(em['From'], to, headers + "\r\n\r\n" + body_msg)
+
+smtp.quit()
+imap.close()
