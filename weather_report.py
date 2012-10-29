@@ -54,7 +54,7 @@ for msg_id in data:
     imap.uid('STORE', msg_id, '+FLAGS', '(\Deleted)')
     imap.expunge()
     
-    headers = ["From: " + em['From'], "Subject: SMS from %s" % (email.utils.parseaddr(em['From'])[0]),
+    headers = ["From: %s" % (em['From']), "Subject: SMS from %s" % (email.utils.parseaddr(em['From'])[0]),
                "To: "+to, "MIME-Version: 1.0", "Content-Type: text/html"]
     headers = "\r\n".join(headers)
     
