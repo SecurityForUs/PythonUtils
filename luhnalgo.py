@@ -38,7 +38,7 @@ while i < len(data_rev):
             val = val[0]
         
         # Add the new value to the stream
-        datastr = "%s%d" % (datastr, str(val))
+        datastr = "%s%s" % (datastr, str(val))
     else:
         datastr = "%s%s" % (datastr, data_rev[i])
         
