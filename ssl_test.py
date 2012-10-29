@@ -8,11 +8,14 @@ This is a simple testing script to check if SSLv2 is available.
 Due to the weaknesses in SSLv2, it is highly advisable to at the bare minimum allow SSLv23, which
 prefers the use of SSLv3, but falls back to v2 if v3 is not an option.
 """
+import sys
+
 try:
     import ssl
 except:
     print "Unable to import SSL library into script.  Compile Python with SSL support to use this."
-        
+    sys.exit(1)
+            
 def check():
     """
     Below is a doctest to ensure everything runs fine.
