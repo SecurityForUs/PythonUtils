@@ -54,8 +54,8 @@ while i < len(datastr):
 
 # Multiply the total sum by 9, then get the final digit of the product
 i = j * 9
-i = str(i)
-i = i[-1:]
+i = str(i)[-1:]
+#i = i[-1:]
 
 # If the last digit of the product above matches the last digit of the original number, success
 if i == checksum:
