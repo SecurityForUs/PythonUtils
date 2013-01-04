@@ -19,9 +19,9 @@ title = raw_input("The title of this post is: ")
 author = raw_input("The author is: ")
 excerpt = raw_input("Summary of this post: ")
 
-def make_slug(text):
+def make_slug(txt):
     import re
-    tmp = text
+    tmp = txt
     text = str(tmp).lower()
 
     bad = re.compile("[^a-z0-9_\s-]")
@@ -35,7 +35,13 @@ def make_slug(text):
     return slug
 
 slug = make_slug(title)
-tags = make_slug(tags)
+
+cloud = tags.split(",")
+
+for id,tag in enumerate(cloud):
+    cloud[id] = make_slug(tag)
+
+tags = ",".join(cloud)
 
 from time import strftime
 
